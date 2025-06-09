@@ -5,7 +5,7 @@ import joblib
 from streamlit_option_menu import option_menu
 
 # Load Data
-df = pd.read_csv(r"C:\Users\prade\Downloads\Multiple_disease_dataset.csv")
+df = pd.read_csv("Multiple_disease_dataset.csv")
 
 # Load Encoders
 gender_encoding = {'Male': 1, 'Female': 0}
@@ -20,9 +20,9 @@ with open('diet_label_encoder.pkl', 'rb') as f:
     diet_encoding = pickle.load(f)
 
 # Load Model
-model = joblib.load(r"C:\Users\prade\Downloads\Disease_model.pkl")
-model1=joblib.load(r"C:\Users\prade\Downloads\medication_model.pkl")
-model2=joblib.load(r"C:\Users\prade\Downloads\diet_model.pkl")
+model = joblib.load("Disease_model.pkl")
+model1=joblib.load("medication_model.pkl")
+model2=joblib.load("diet_model.pkl")
 # Sidebar Menu
 with st.sidebar:
     selected = option_menu("Health Assistant", ["🏠 Home", "📊 Project Overview", "🩺 Predict Health Condition"],
@@ -38,7 +38,7 @@ if selected == "🏠 Home":
         st.markdown("### 🔍 How it works")
         st.write("We use multiple machine learning models, including Logistic Regression, K-Nearest Neighbors, Support Vector Classifier, Decision Tree, Random Forest, Gaussian Naive Bayes, and XGBoost, to predict possible health conditions based on symptoms, vital signs, and demographic data.")
     with col2:
-        st.image(r"C:\Users\prade\Downloads\1disease.jpg", use_container_width=True)
+        st.image("1disease.jpg", use_container_width=True)
 
     st.markdown("---")
     st.markdown("### ✅ Key Factors Considered:")
@@ -56,7 +56,7 @@ elif selected == "📊 Project Overview":
     st.dataframe(df.head())
 
     st.markdown(f"📄 **Total Records**: {df.shape[0]} | **Features**: {df.shape[1]}")
-    st.image(r"C:\Users\prade\Downloads\3disease.jpg", use_container_width=True)
+    st.image("3disease.jpg", use_container_width=True)
 
     st.markdown("---")
     st.subheader("🤖 Machine Learning")
